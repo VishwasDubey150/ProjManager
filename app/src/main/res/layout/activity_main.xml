@@ -1,8 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#FFDEDE"/>
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/blinker_bold"
+        android:text="ProjManager"
+        android:textSize="60sp"
+        android:textColor="#FF8B8B"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp">
+    </TextView>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/f"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textVie2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/blinker_bold"
+        android:text="Let's start"
+        android:textSize="50sp"
+        android:layout_gravity="center">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textVie3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/blinker_semibold"
+        android:paddingLeft="40dp"
+        android:text="Collaborate and plan together across multiple devices"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <Button
+        android:layout_width="330dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Log in"
+        android:fontFamily="@font/blinker_bold"
+        android:textAllCaps="false"
+        android:background="@drawable/bt_bg"
+        android:textSize="40sp">
+    </Button>
+
+
+    <Button
+        android:backgroundTint="@color/white"
+        android:layout_width="330dp"
+        android:fontFamily="@font/blinker_bold"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Sign up"
+        android:textAllCaps="false"
+        android:textSize="40sp"
+        android:background="@drawable/bt_bg"
+        android:onClick="signup_page">
+    </Button>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
