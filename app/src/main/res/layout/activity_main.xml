@@ -50,6 +50,7 @@
     </TextView>
 
     <Button
+        android:onClick="login"
         android:layout_width="330dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
