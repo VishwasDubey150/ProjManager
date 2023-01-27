@@ -1,9 +1,10 @@
-package com.example.projmanager
+package com.example.projmanager.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.projmanager.R
 
 class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,7 @@ class Signup : AppCompatActivity() {
     }
 
     fun back(view: View) {
-        val intent= Intent(this,MainActivity::class.java)
+        val intent= Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 }

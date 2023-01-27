@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF8B8B"
-    tools:context=".splash">
+    tools:context=".Activities.splash">
 
     <TextView
         android:id="@+id/textView"
