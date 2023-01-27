@@ -44,6 +44,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/name"
                 android:layout_width="280dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="40dp"
@@ -56,6 +57,7 @@
             </EditText>
 
             <EditText
+                android:id="@+id/email"
                 android:layout_width="280dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
@@ -69,6 +71,7 @@
             </EditText>
 
             <EditText
+                android:id="@+id/password"
                 android:layout_width="280dp"
                 android:inputType="textPassword"
                 android:layout_height="60dp"
@@ -91,8 +94,10 @@
                 android:textSize="30dp"
                 android:fontFamily="@font/blinker_bold"
                 android:layout_marginTop="40dp"
-                android:elevation="40dp">
+                android:elevation="40dp"
+                android:onClick="sign_up">
             </Button>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

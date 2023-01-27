@@ -45,6 +45,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/emailL"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -60,6 +61,7 @@
             </EditText>
 
             <EditText
+                android:id="@+id/passwordL"
                 android:layout_width="280dp"
                 android:inputType="textPassword"
                 android:layout_height="60dp"
@@ -73,10 +75,11 @@
             </EditText>
 
             <Button
+                android:onClick="login"
                 android:layout_width="280dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:text="Sign up"
+                android:text="Log in"
                 android:textAllCaps="false"
                 android:background="@drawable/bt_bg"
                 android:textSize="30dp"
