@@ -1,14 +1,13 @@
 package com.example.projmanager.Activities
 
-import android.app.Dialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.example.projmanager.R
+import com.example.projmanager.home_activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -36,8 +35,9 @@ class login : base_activity() {
                     hidePD()
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Logged in Successfully", Toast.LENGTH_SHORT).show()
-                        val intent=Intent(this,home_activity::class.java)
+                        val intent=Intent(this, home_activity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                     else
                     {
