@@ -21,5 +21,6 @@ class MainActivity : AppCompatActivity() {
     fun login(view: View) {
         val intent=Intent(this, login::class.java)
         startActivity(intent)
+        finish()
     }
 }

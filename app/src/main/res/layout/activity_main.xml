@@ -14,7 +14,7 @@
         android:fontFamily="@font/blinker_bold"
         android:text="ProjManager"
         android:textSize="60sp"
-        android:textColor="#FF8B8B"
+        android:textColor="#716F6F"
         android:layout_gravity="center"
         android:layout_marginTop="40dp">
     </TextView>
@@ -61,7 +61,6 @@
         android:background="@drawable/bt_bg"
         android:textSize="40sp">
     </Button>
-
 
     <Button
         android:backgroundTint="@color/white"

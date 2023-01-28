@@ -6,7 +6,10 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.projmanager.Firebase.FirestoreClass
 import com.example.projmanager.R
+import com.example.projmanager.home_activity
+import com.example.projmanager.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -16,6 +19,25 @@ class Signup : base_activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
         supportActionBar?.hide()
+    }
+
+     fun userRegisteredSuccess()
+     {
+         Toast.makeText(this,
+             "your accout is registered successfully!!",
+             Toast.LENGTH_LONG).show()
+         hidePD()
+         FirebaseAuth.getInstance().signOut()
+
+         finish()
+     }
+
+    fun signInSuccess(user: User)
+    {
+        hidePD()
+        val intent=Intent(this,home_activity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     fun back(view: View) {
@@ -40,11 +62,8 @@ class Signup : base_activity() {
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         val registeredEmail = firebaseUser.email!!
-                        Toast.makeText(this,
-                            "$name your accout is created successfully!!",
-                            Toast.LENGTH_LONG).show()
-                        FirebaseAuth.getInstance().signOut()
-                        finish()
+                        val user= User(firebaseUser.uid,name,registeredEmail)
+                        FirestoreClass().registerUser(this,user)
                     } else {
                         Toast.makeText(this, task.exception!!.message, Toast.LENGTH_LONG).show()
                     }

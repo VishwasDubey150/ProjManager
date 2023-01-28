@@ -19,7 +19,6 @@ class login : base_activity() {
         setContentView(R.layout.activity_login)
         supportActionBar?.hide()
         auth = Firebase.auth
-
     }
     fun login(view: View) {
         var emailL=findViewById<EditText>(R.id.emailL)
@@ -39,8 +38,7 @@ class login : base_activity() {
                         startActivity(intent)
                         finish()
                     }
-                    else
-                    {
+                    else {
                         Toast.makeText(this, task.exception!!.message, Toast.LENGTH_LONG).show()
                     }
                 }
@@ -65,6 +63,4 @@ class login : base_activity() {
             }
         }
     }
-
-
 }
