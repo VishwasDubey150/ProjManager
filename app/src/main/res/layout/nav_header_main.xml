@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:background="@color/purple_500"
+    android:paddingTop="90dp"
+    android:paddingBottom="50dp"
+    android:paddingLeft="40dp">
+    
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_launcher_background">
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
