@@ -1,7 +1,9 @@
 package com.example.projmanager.Firebase
 import android.app.Activity
+import com.example.projmanager.Activities.MainActivity
 import com.example.projmanager.Activities.Signup
 import com.example.projmanager.Activities.login
+import com.example.projmanager.home_activity
 import com.example.projmanager.models.User
 import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +24,9 @@ class FirestoreClass {
                 when (activity) {
                     is Signup -> {
                         activity.signInSuccess(loggedInUser)
+                    }
+                    is home_activity -> {
+                        activity.updateNavUserDetail(loggedInUser)
                     }
                 }
             }
