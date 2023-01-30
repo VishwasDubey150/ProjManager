@@ -30,6 +30,6 @@ class home_activity : AppCompatActivity() {
 
     private fun setupActionBar()
     {
-        
+
     }
 }

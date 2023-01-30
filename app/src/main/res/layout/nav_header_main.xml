@@ -8,7 +8,7 @@
     android:background="@color/purple_500"
     android:paddingTop="90dp"
     android:paddingBottom="20dp"
-    android:theme="@style/Theme.Material3.Dark">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
     
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60dp"
