@@ -7,14 +7,29 @@
     android:orientation="vertical"
     android:background="@color/purple_500"
     android:paddingTop="90dp"
-    android:paddingBottom="50dp"
-    android:paddingLeft="40dp">
+    android:paddingBottom="20dp"
+    android:theme="@style/Theme.Material3.Dark">
     
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/ic_launcher_background">
+        android:src="@drawable/profile">
     </de.hdodenhof.circleimageview.CircleImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Vishwas Dubey"
+        android:fontFamily="@font/blinker_bold"
+        android:textColor="@color/white"
+        android:paddingLeft="20dp">
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF8B8B">
+    </View>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

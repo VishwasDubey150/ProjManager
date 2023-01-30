@@ -3,6 +3,8 @@ package com.example.projmanager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Profile
+import android.view.MenuItem
 import android.view.View
 import com.example.projmanager.Activities.login
 import com.example.projmanager.R
@@ -14,10 +16,18 @@ class home_activity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         supportActionBar?.hide()
     }
-
-    fun logout(view: View) {
+    fun logout(item: MenuItem) {
         FirebaseAuth.getInstance().signOut()
         startActivity(Intent(this, login::class.java))
         finish()
+    }
+
+    fun profile(item: MenuItem) {
+        val intent=Intent(this,Profile::class.java)
+        startActivity(intent)
+    }
+
+    private fun setupActionBar()
+    {
     }
 }

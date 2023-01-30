@@ -13,6 +13,13 @@
         android:theme="@style/Theme.ProjManager"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.profile_activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".home_activity"
             android:exported="false">
             <meta-data
@@ -28,13 +35,6 @@
         </activity>
         <activity
             android:name=".Home"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".base_activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
