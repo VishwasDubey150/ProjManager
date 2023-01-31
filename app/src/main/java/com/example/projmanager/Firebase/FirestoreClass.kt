@@ -1,5 +1,8 @@
 package com.example.projmanager.Firebase
 import android.app.Activity
+import android.provider.ContactsContract.Profile
+import android.util.Log
+import android.widget.Toast
 import com.example.projmanager.Activities.Signup
 import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.home_activity
@@ -34,6 +37,22 @@ class FirestoreClass {
             }
     }
 
+    fun updateUserProfileData(activity : profile_activity,userHashMap: HashMap<String, Any>)
+    {
+        mFirestore.collection(Constants.USERS)
+            .document(getCurrnetUserId())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                Log.i(activity.javaClass.simpleName,"Profile data updated")
+                Toast.makeText(activity,"Profile updated successfully!",Toast.LENGTH_SHORT).show()
+                activity.profileupdatedSuccess()
+            }.addOnFailureListener {
+                e ->
+                activity.hidePD()
+                Log.e(activity.javaClass.simpleName,"Error",e)
+                Toast.makeText(activity,"Error while updating",Toast.LENGTH_SHORT).show()
+            }
+    }
 
     fun registerUser(activity: Signup,UserInfo: User)
     {

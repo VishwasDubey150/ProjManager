@@ -31,7 +31,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="150dp"
-        android:id="@+id/iv_user_image"
+        android:id="@+id/iv_profile_user_image"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/profile"
@@ -86,6 +86,7 @@
 
     <Button
         android:id="@+id/update"
+        android:onClick="update"
         android:layout_width="250dp"
         android:backgroundTint="@color/white"
         android:layout_height="80dp"

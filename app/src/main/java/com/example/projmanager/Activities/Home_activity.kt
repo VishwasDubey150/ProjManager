@@ -14,9 +14,10 @@ import com.example.projmanager.Activities.login
 import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.Firebase.FirestoreClass
 import com.example.projmanager.models.User
+import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
-class home_activity : AppCompatActivity() {
+class home_activity : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -58,7 +59,6 @@ class home_activity : AppCompatActivity() {
             toggle()
         }
     }
-
     private fun toggle()
     {
         val drawerLayout: DrawerLayout = findViewById (R.id.drawer_layout)
