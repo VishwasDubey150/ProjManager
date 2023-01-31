@@ -1,20 +1,18 @@
 package com.example.projmanager.Firebase
 import android.app.Activity
-import com.example.projmanager.Activities.MainActivity
 import com.example.projmanager.Activities.Signup
-import com.example.projmanager.Activities.login
+import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.home_activity
 import com.example.projmanager.models.User
 import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserInfo
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
 class FirestoreClass {
     private val mFirestore = FirebaseFirestore.getInstance()
 
-    fun signInUser(activity: Activity) {
+    fun LoadUserData(activity: Activity) {
         mFirestore.collection(Constants.USERS)
             .document(getCurrnetUserId())
             .get()
@@ -27,6 +25,10 @@ class FirestoreClass {
                     }
                     is home_activity -> {
                         activity.updateNavUserDetail(loggedInUser)
+                    }
+                    is profile_activity -> {
+                        activity.setUSerDataInUI(loggedInUser)
+
                     }
                 }
             }

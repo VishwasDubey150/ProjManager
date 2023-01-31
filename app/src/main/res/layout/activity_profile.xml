@@ -30,19 +30,23 @@
     </TextView>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:id="@+id/iv_user_image"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/profile"
         android:layout_gravity="center">
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <EditText
+        android:id="@+id/iv_username"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:background="@drawable/et_bg"
         android:hint="Name"
         android:elevation="20dp"
         android:textSize="30dp"
+        android:layout_marginTop="70dp"
         android:padding="10dp"
         android:fontFamily="@font/blinker_bold"
         android:layout_gravity="center"
@@ -50,12 +54,13 @@
     </EditText>
 
     <EditText
+        android:id="@+id/iv_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/et_bg"
         android:hint="email"
         android:elevation="20dp"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:layout_marginTop="20dp"
         android:padding="20dp"
         android:fontFamily="@font/blinker_bold"
@@ -64,6 +69,7 @@
     </EditText>
 
     <EditText
+        android:id="@+id/iv_mobile"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:background="@drawable/et_bg"
@@ -79,6 +85,7 @@
     </EditText>
 
     <Button
+        android:id="@+id/update"
         android:layout_width="250dp"
         android:backgroundTint="@color/white"
         android:layout_height="80dp"

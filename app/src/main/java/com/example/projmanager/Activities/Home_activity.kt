@@ -3,32 +3,25 @@ package com.example.projmanager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Profile
-import android.view.Gravity
 import android.view.MenuItem
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import androidx.constraintlayout.widget.ConstraintSet.Layout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.projmanager.Activities.login
 import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.Firebase.FirestoreClass
-import com.example.projmanager.R
 import com.example.projmanager.models.User
 import com.google.firebase.auth.FirebaseAuth
-import io.grpc.InternalChannelz.id
 
 class home_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setupActionBar()
-
-        FirestoreClass().signInUser(this)
+        FirestoreClass().LoadUserData(this)
     }
 
     fun updateNavUserDetail(user:User)
