@@ -95,4 +95,8 @@ class Signup : base_activity() {
             }
         }
     }
+
+    fun backS(view: View) {
+        startActivity(Intent(this,MainActivity::class.java))
+    }
 }

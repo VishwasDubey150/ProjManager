@@ -63,4 +63,8 @@ class login : base_activity() {
             }
         }
     }
+
+    fun backL(view: View) {
+        startActivity(Intent(this,MainActivity::class.java))
+    }
 }

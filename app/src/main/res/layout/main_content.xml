@@ -6,15 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".home_activity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/blinker_bold"
-        android:text="Welcome"
-        android:textSize="40sp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="68dp"
+        android:backgroundTint="#FF8B8B"
+        android:layout_height="53dp"
+        android:src="@drawable/ic_baseline_add_24"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </TextView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.935"
+        android:onClick="add">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
@@ -13,6 +14,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.projmanager.Activities.base_activity
+import com.example.projmanager.Activities.create_board
 import com.example.projmanager.Activities.login
 import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.Firebase.FirestoreClass
@@ -88,5 +90,10 @@ class home_activity : base_activity()  {
         else {
             drawerLayout.openDrawer(GravityCompat.START)
         }
+    }
+
+    fun add(view: View) {
+        val intent = Intent(this,create_board::class.java)
+        startActivity(intent)
     }
 }

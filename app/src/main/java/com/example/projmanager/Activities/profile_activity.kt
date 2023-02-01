@@ -112,7 +112,7 @@ class profile_activity : base_activity() {
     }
 
 
-    fun back(view: View) {
+    fun backP(view: View) {
         val intent = Intent(this, home_activity::class.java)
         startActivity(intent)
         finish()
