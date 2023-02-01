@@ -43,6 +43,8 @@ class profile_activity : base_activity() {
         supportActionBar?.hide()
         FirestoreClass().LoadUserData(this)
         val iv_profile_user_image = findViewById<ImageView>(R.id.iv_profile_user_image)
+
+
         iv_profile_user_image.setOnClickListener {
 
             if (ContextCompat.checkSelfPermission(this,
@@ -200,6 +202,8 @@ class profile_activity : base_activity() {
 
         fun profileupdatedSuccess() {
             hidePD()
+
+            setResult(Activity.RESULT_OK)
             finish()
         }
     }

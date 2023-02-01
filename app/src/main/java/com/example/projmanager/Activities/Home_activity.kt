@@ -1,8 +1,10 @@
 package com.example.projmanager
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
+import com.example.projmanager.Activities.base_activity
 import com.example.projmanager.Activities.login
 import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.Firebase.FirestoreClass
@@ -17,7 +20,12 @@ import com.example.projmanager.models.User
 import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
-class home_activity : AppCompatActivity()  {
+class home_activity : base_activity()  {
+
+    companion object{
+        const val REQUEST_CODE : Int = 11
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -39,6 +47,18 @@ class home_activity : AppCompatActivity()  {
         text_name.text=user.name
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE)
+        {
+            FirestoreClass().LoadUserData(this)
+        }
+        else
+        {
+            Log.e("Cancelled","Cancelled")
+        }
+    }
+
     fun logout(item: MenuItem) {
         FirebaseAuth.getInstance().signOut()
         startActivity(Intent(this, login::class.java))
@@ -46,8 +66,7 @@ class home_activity : AppCompatActivity()  {
     }
 
     fun profile(item: MenuItem) {
-        val intent=Intent(this, profile_activity::class.java)
-        startActivity(intent)
+        startActivityForResult(Intent(this, profile_activity::class.java), REQUEST_CODE)
     }
 
     private fun setupActionBar()
