@@ -28,10 +28,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="-100dp"
             android:elevation="0dp"
-            android:src="@drawable/add_c"></de.hdodenhof.circleimageview.CircleImageView>
+            android:src="@drawable/add_c">
+        </de.hdodenhof.circleimageview.CircleImageView>
 
 
         <EditText
+            android:id="@+id/board_name"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -42,9 +44,11 @@
             android:gravity="center"
             android:hint="Board name"
             android:padding="10dp"
-            android:textSize="30dp"></EditText>
+            android:textSize="30dp">
+        </EditText>
 
         <Button
+            android:id="@+id/create"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -52,7 +56,8 @@
             android:fontFamily="@font/blinker_bold"
             android:text="Create"
             android:textAllCaps="false"
-            android:textSize="40dp"></Button>
+            android:textSize="40dp">
+        </Button>
     </androidx.cardview.widget.CardView>
 
     <ImageView

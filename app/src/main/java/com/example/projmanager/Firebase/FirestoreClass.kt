@@ -4,8 +4,10 @@ import android.provider.ContactsContract.Profile
 import android.util.Log
 import android.widget.Toast
 import com.example.projmanager.Activities.Signup
+import com.example.projmanager.Activities.create_board
 import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.home_activity
+import com.example.projmanager.models.Board
 import com.example.projmanager.models.User
 import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +36,22 @@ class FirestoreClass {
 
                     }
                 }
+            }
+    }
+
+    fun createBoard(activity: create_board, board: Board)
+    {
+        mFirestore.collection(Constants.BOARDS)
+            .document()
+            .set(board, SetOptions.merge())
+            .addOnSuccessListener {
+                Log.e(activity.javaClass.simpleName,"Board created successfully")
+                Toast.makeText(activity,"Boarrd created successfully.",Toast.LENGTH_SHORT).show()
+                activity.boardCreatedSuccessfully()
+            }.addOnFailureListener {
+                exception ->
+                activity.hidePD()
+                Log.e(activity.javaClass.simpleName,"Error",exception)
             }
     }
 

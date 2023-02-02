@@ -28,6 +28,8 @@ class home_activity : base_activity()  {
         const val REQUEST_CODE : Int = 11
     }
 
+    private lateinit var mUserName: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -37,6 +39,7 @@ class home_activity : base_activity()  {
 
     fun updateNavUserDetail(user:User)
     {
+        mUserName=user.name
         val nav_user_image=findViewById<ImageView>(R.id.nav_user_image)
         val text_name=findViewById<TextView>(R.id.name_text)
         Glide
@@ -91,9 +94,9 @@ class home_activity : base_activity()  {
             drawerLayout.openDrawer(GravityCompat.START)
         }
     }
-
     fun add(view: View) {
         val intent = Intent(this,create_board::class.java)
+        intent.putExtra(Constants.NAME,mUserName)
         startActivity(intent)
     }
 }
