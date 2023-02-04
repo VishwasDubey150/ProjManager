@@ -3,6 +3,7 @@ import android.app.Activity
 import android.provider.ContactsContract.Profile
 import android.util.Log
 import android.widget.Toast
+import com.example.projmanager.Activities.MainActivity
 import com.example.projmanager.Activities.Signup
 import com.example.projmanager.Activities.create_board
 import com.example.projmanager.Activities.profile_activity
@@ -13,11 +14,12 @@ import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.toObject
 
 class FirestoreClass {
     private val mFirestore = FirebaseFirestore.getInstance()
 
-    fun LoadUserData(activity: Activity) {
+    fun LoadUserData(activity: Activity,readBoardsList :Boolean=false) {
         mFirestore.collection(Constants.USERS)
             .document(getCurrnetUserId())
             .get()
@@ -29,7 +31,7 @@ class FirestoreClass {
                         activity.signInSuccess(loggedInUser)
                     }
                     is home_activity -> {
-                        activity.updateNavUserDetail(loggedInUser)
+                        activity.updateNavUserDetail(loggedInUser,readBoardsList)
                     }
                     is profile_activity -> {
                         activity.setUSerDataInUI(loggedInUser)
@@ -52,6 +54,31 @@ class FirestoreClass {
                 exception ->
                 activity.hidePD()
                 Log.e(activity.javaClass.simpleName,"Error",exception)
+            }
+    }
+
+    fun getBoardsList(activity: home_activity)
+    {
+        mFirestore.collection(Constants.BOARDS)
+            .whereArrayContains(Constants.ASSIGNED_TO,getCurrnetUserId())
+
+            .get()
+            .addOnSuccessListener {
+                document ->
+                Log.i(activity.javaClass.simpleName,document.documents.toString())
+                val boardList: ArrayList<Board> = ArrayList()
+                for(i in document.documents)
+                {
+                    val board=i.toObject(Board::class.java)!!
+                    board.documentId=i.id
+                    boardList.add(board)
+                }
+
+                activity.populateBoardsListToUI(boardList)
+            }.addOnFailureListener { e ->
+
+                activity.hidePD()
+                Log.e(activity.javaClass.simpleName,"Error")
             }
     }
 

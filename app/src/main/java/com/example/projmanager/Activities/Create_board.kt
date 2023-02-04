@@ -180,6 +180,7 @@ class create_board : base_activity() {
     fun boardCreatedSuccessfully()
     {
         hidePD()
+        setResult(Activity.RESULT_OK)
         finish()
     }
 }

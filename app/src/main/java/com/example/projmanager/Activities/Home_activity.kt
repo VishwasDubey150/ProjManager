@@ -12,12 +12,16 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.projmanager.Activities.base_activity
 import com.example.projmanager.Activities.create_board
 import com.example.projmanager.Activities.login
 import com.example.projmanager.Activities.profile_activity
 import com.example.projmanager.Firebase.FirestoreClass
+import com.example.projmanager.adapter.BoardsItemAdapter
+import com.example.projmanager.models.Board
 import com.example.projmanager.models.User
 import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -26,6 +30,7 @@ class home_activity : base_activity()  {
 
     companion object{
         const val REQUEST_CODE : Int = 11
+        const val CREATE_BOARD_REQUEST_CODE: Int=12
     }
 
     private lateinit var mUserName: String
@@ -34,10 +39,10 @@ class home_activity : base_activity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setupActionBar()
-        FirestoreClass().LoadUserData(this)
+        FirestoreClass().LoadUserData(this,true)
     }
 
-    fun updateNavUserDetail(user:User)
+    fun updateNavUserDetail(user:User,readBoardsList : Boolean)
     {
         mUserName=user.name
         val nav_user_image=findViewById<ImageView>(R.id.nav_user_image)
@@ -50,6 +55,12 @@ class home_activity : base_activity()  {
             .into(nav_user_image)
 
         text_name.text=user.name
+
+        if(readBoardsList)
+        {
+            showPD()
+            FirestoreClass().getBoardsList(this)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -57,6 +68,11 @@ class home_activity : base_activity()  {
         if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE)
         {
             FirestoreClass().LoadUserData(this)
+        }
+
+        else if(resultCode == Activity.RESULT_OK && requestCode == CREATE_BOARD_REQUEST_CODE)
+        {
+            FirestoreClass().getBoardsList(this)
         }
         else
         {
@@ -97,6 +113,30 @@ class home_activity : base_activity()  {
     fun add(view: View) {
         val intent = Intent(this,create_board::class.java)
         intent.putExtra(Constants.NAME,mUserName)
-        startActivity(intent)
+        startActivityForResult(intent, CREATE_BOARD_REQUEST_CODE)
+    }
+
+    fun populateBoardsListToUI(boardsList: ArrayList<Board>)
+    {
+        val rv=findViewById<RecyclerView>(R.id.rv)
+        val tv_no_board=findViewById<TextView>(R.id.no_board_tv)
+        hidePD()
+
+        if(boardsList.size>0)
+        {
+            rv.visibility=View.VISIBLE
+            tv_no_board.visibility=View.GONE
+
+            rv.layoutManager=LinearLayoutManager(this)
+            rv.setHasFixedSize(true)
+
+            val adapter=BoardsItemAdapter(this,boardsList)
+            rv.adapter=adapter
+        }
+        else
+        {
+            rv.visibility=View.GONE
+            tv_no_board.visibility=View.VISIBLE
+        }
     }
 }
