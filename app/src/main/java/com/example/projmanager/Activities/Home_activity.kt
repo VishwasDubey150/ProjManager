@@ -25,6 +25,7 @@ import com.example.projmanager.models.Board
 import com.example.projmanager.models.User
 import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
+import java.text.ParsePosition
 
 class home_activity : base_activity()  {
 
@@ -132,6 +133,12 @@ class home_activity : base_activity()  {
 
             val adapter=BoardsItemAdapter(this,boardsList)
             rv.adapter=adapter
+
+            adapter.setOnClickListener(object : BoardsItemAdapter.OnClickListener {
+                override fun onClick(position: Int, model: Board) {
+                    startActivity(Intent(this@home_activity,Tasklist::class.java))
+                }
+            })
         }
         else
         {
