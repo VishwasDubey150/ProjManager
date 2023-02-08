@@ -3,10 +3,7 @@ import android.app.Activity
 import android.provider.ContactsContract.Profile
 import android.util.Log
 import android.widget.Toast
-import com.example.projmanager.Activities.MainActivity
-import com.example.projmanager.Activities.Signup
-import com.example.projmanager.Activities.create_board
-import com.example.projmanager.Activities.profile_activity
+import com.example.projmanager.Activities.*
 import com.example.projmanager.home_activity
 import com.example.projmanager.models.Board
 import com.example.projmanager.models.User
@@ -16,7 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.toObject
 
-class FirestoreClass {
+class FirestoreClass :base_activity(){
     private val mFirestore = FirebaseFirestore.getInstance()
 
     fun LoadUserData(activity: Activity,readBoardsList :Boolean=false) {
@@ -106,6 +103,22 @@ class FirestoreClass {
             .set(UserInfo, SetOptions.merge())
             .addOnSuccessListener {
                 activity.userRegisteredSuccess()
+            }
+    }
+
+    fun getBoardDetails(activity: Tasklist, documentId: String) {
+        mFirestore.collection(Constants.BOARDS)
+            .document(documentId)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.toString())
+
+                // Send the result of board to the base activity.
+                activity.boardDetails(document.toObject(Board::class.java)!!)
+            }
+            .addOnFailureListener { e ->
+                hidePD()
+                Log.e(activity.javaClass.simpleName, "Error while creating a board.", e)
             }
     }
 

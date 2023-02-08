@@ -2,7 +2,6 @@ package com.example.projmanager
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -15,17 +14,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.projmanager.Activities.base_activity
-import com.example.projmanager.Activities.create_board
-import com.example.projmanager.Activities.login
-import com.example.projmanager.Activities.profile_activity
+import com.example.projmanager.Activities.*
 import com.example.projmanager.Firebase.FirestoreClass
 import com.example.projmanager.adapter.BoardsItemAdapter
 import com.example.projmanager.models.Board
 import com.example.projmanager.models.User
 import com.example.projmanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
-import java.text.ParsePosition
 
 class home_activity : base_activity()  {
 
@@ -112,6 +107,7 @@ class home_activity : base_activity()  {
         }
     }
     fun add(view: View) {
+        mUserName="hey"
         val intent = Intent(this,create_board::class.java)
         intent.putExtra(Constants.NAME,mUserName)
         startActivityForResult(intent, CREATE_BOARD_REQUEST_CODE)
@@ -136,7 +132,9 @@ class home_activity : base_activity()  {
 
             adapter.setOnClickListener(object : BoardsItemAdapter.OnClickListener {
                 override fun onClick(position: Int, model: Board) {
-                    startActivity(Intent(this@home_activity,Tasklist::class.java))
+                    val intent = Intent(this@home_activity,Tasklist::class.java)
+                    intent.putExtra(Constants.DOCUMENT_ID,model.documentId)
+                    startActivity(intent)
                 }
             })
         }

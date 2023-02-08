@@ -17,15 +17,10 @@ open class BoardsItemAdapter (private val context: Context,
         private var onClickListener :OnClickListener? = null
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
-                return MyViewHolder(
-                        LayoutInflater.from(context).inflate(R.layout.board_item,parent,false)
-                )
-
+                return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.board_item,parent,false))
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
                 val model = list[position]
                 if(holder is MyViewHolder) {
                         Glide
@@ -57,12 +52,9 @@ open class BoardsItemAdapter (private val context: Context,
                 this.onClickListener=onClickListener
         }
 
-
         override fun getItemCount(): Int {
                 return list.size
         }
-
-
 
         private  class MyViewHolder(view: View):RecyclerView.ViewHolder(view)
 

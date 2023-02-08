@@ -47,10 +47,12 @@
                     android:id="@+id/board_created"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="by:"
+                    android:textSize="15dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/blinker_bold"
+                    android:text="Created by:"
                     android:layout_gravity="center"
-                    android:layout_marginTop="2dp">
+                    android:layout_marginTop="10dp">
                 </TextView>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
