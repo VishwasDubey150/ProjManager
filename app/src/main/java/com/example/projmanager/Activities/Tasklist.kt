@@ -3,10 +3,14 @@ package com.example.projmanager.Activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.projmanager.Firebase.FirestoreClass
 import com.example.projmanager.R
 import com.example.projmanager.models.Board
 import com.example.projmanager.utils.Constants
+import com.projemanag.adapters.TaskListItemsAdapter
+import com.projemanag.model.Task
 
 class Tasklist : base_activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +43,6 @@ class Tasklist : base_activity() {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
             actionBar.title = title
         }
-
         toolbar.setNavigationOnClickListener { onBackPressed() }
     }
     // END
@@ -57,7 +60,17 @@ class Tasklist : base_activity() {
         // START
         // Call the function to setup action bar.
         setupActionBar(board.name)
+        val addTaskList = Task(resources.getString(R.string.add_list))
+        board.taskList.add(addTaskList)
+
+        var rv_task_list=findViewById<RecyclerView>(R.id.rv_task_list)
+        rv_task_list?.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_task_list.setHasFixedSize(true)
+
+        // Create an instance of TaskListItemsAdapter and pass the task list to it.
+        val adapter = TaskListItemsAdapter(this, board.taskList)
+        rv_task_list.adapter = adapter // Attach the adapter to the recyclerView.
         // END
     }
-    // END
 }
